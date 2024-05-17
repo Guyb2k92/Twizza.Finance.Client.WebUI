@@ -1,5 +1,13 @@
-<ol class="breadcrumb mt-5">
+<ol class="breadcrumb mb-0">
+  <li class="breadcrumb-item">
+    <a load="/" style="font-size: 12px !important">Home</a>
+  </li>
   <li class="breadcrumb-item" repeat.for="crumb of breadcrumbs">
-    <a href="#">test</a>
+    <a
+      style="font-size: 13px !important"
+      class="text-reset"
+      load="${crumb.route}"
+      >${crumb.name}</a
+    >
   </li>
 </ol>

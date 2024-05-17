@@ -1,1 +1,3 @@
-export class PurchaseOrders {}
+export class PurchaseOrders {
+  constructor() {}
+}
