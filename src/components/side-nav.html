@@ -1,59 +1,39 @@
 <!-- Sidenav-->
-<nav
-  id="sidenav-4"
-  class="sidenav"
-  data-mdb-mode="side"
-  data-mdb-slim="true"
-  data-mdb-slim-collapsed="true"
-  data-mdb-content="#content"
->
-  <div class="d-flex justify-content-center p-3">
-    <button
-      class="btn btn-outline-primary p-2 btn-floating"
-      click.trigger="toggleSlim()"
-    >
-      <i class="fa-solid fa-bars"></i>
-    </button>
-  </div>
-  <ul class="sidenav-menu">
-    <li class="sidenav-item">
-      <a load="/deals" class="sidenav-link">
-        <i class="fas fa-solid fa-tags me-3"></i
-        ><span data-mdb-slim="false">Deals</span></a
-      >
-    </li>
-    <li class="sidenav-item">
-      <a load="/purchase-orders" class="sidenav-link">
-        <i class="fas fa-solid fa-cash-register me-3"></i
-        ><span data-mdb-slim="false">Purchase Orders</span></a
-      >
-    </li>
-    <li class="sidenav-item">
-      <a class="sidenav-link"
-        ><i class="fas fa-solid fa-magnifying-glass ms-0 me-3"></i
-        ><span data-mdb-slim="false">Deal Queries</span></a
-      >
-      <ul class="sidenav-collapse">
+<nav id="sidenav-4" class="sidenav" data-mdb-mode="side" data-mdb-slim="true" data-mdb-slim-collapsed="true" data-mdb-content="#content">
+    <div class="d-flex justify-content-center p-3">
+        <button class="btn btn-outline-primary p-2 btn-floating" click.trigger="toggleSlim()">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </div>
+    <ul class="sidenav-menu">
         <li class="sidenav-item">
-          <a class="sidenav-link">Customer Price</a>
+            <a load="/deals" class="sidenav-link"> <i class="fas fa-solid fa-tags me-3"></i><span data-mdb-slim="false">Deals</span></a>
         </li>
         <li class="sidenav-item">
-          <a class="sidenav-link">Logistics Documents</a>
+            <a load="/purchase-orders" class="sidenav-link">
+                <i class="fas fa-solid fa-cash-register me-3"></i><span data-mdb-slim="false">Purchase Orders</span></a
+            >
         </li>
         <li class="sidenav-item">
-          <a class="sidenav-link">Customer Deal</a>
+            <a class="sidenav-link"><i class="fas fa-solid fa-magnifying-glass ms-0 me-3"></i><span data-mdb-slim="false">Deal Queries</span></a>
+            <ul class="sidenav-collapse">
+                <li class="sidenav-item">
+                    <a load="/customer-price" class="sidenav-link">Customer Price</a>
+                </li>
+                <li class="sidenav-item">
+                    <a class="sidenav-link">Logistics Documents</a>
+                </li>
+                <li class="sidenav-item">
+                    <a class="sidenav-link">Customer Deal</a>
+                </li>
+                <li class="sidenav-item">
+                    <a class="sidenav-link">Cycle Deal</a>
+                </li>
+                <li class="sidenav-item">
+                    <a class="sidenav-link">List Deal</a>
+                </li>
+            </ul>
         </li>
-        <li class="sidenav-item">
-          <a class="sidenav-link">Cycle Deal</a>
-        </li>
-        <li class="sidenav-item">
-          <a class="sidenav-link">List Deal</a>
-        </li>
-        <li class="sidenav-item">
-          <a class="sidenav-link">Customer Claims</a>
-        </li>
-      </ul>
-    </li>
-  </ul>
+    </ul>
 </nav>
 <!-- Sidenav-->

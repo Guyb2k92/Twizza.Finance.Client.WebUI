@@ -1,22 +1,23 @@
 export class Home {
-  currentDate = new Date();
-  time;
-  date;
+    keywords: string;
 
-  constructor() {
-    this.updateTime(); // Update time initially
-    setInterval(() => this.updateTime(), 60000);
-  }
-  updateTime() {
-    this.currentDate = new Date(); // Refresh the current date
-    this.time =
-      this.currentDate.getHours() + ":" + this.currentDate.getMinutes();
+    currentDate = new Date();
+    time;
+    date;
 
-    this.date =
-      this.currentDate.getDate() +
-      "/" +
-      (this.currentDate.getMonth() + 1) + // Months are zero-indexed, so add 1
-      "/" +
-      this.currentDate.getFullYear();
-  }
+    constructor() {
+        this.updateTime(); // Update time initially
+        setInterval(() => this.updateTime(), 60000);
+    }
+    updateTime() {
+        this.currentDate = new Date(); // Refresh the current date
+        this.time = this.currentDate.getHours() + ':' + this.currentDate.getMinutes();
+
+        this.date =
+            this.currentDate.getDate() +
+            '/' +
+            (this.currentDate.getMonth() + 1) + // Months are zero-indexed, so add 1
+            '/' +
+            this.currentDate.getFullYear();
+    }
 }

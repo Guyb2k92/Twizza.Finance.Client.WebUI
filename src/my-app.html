@@ -1,10 +1,11 @@
 <div class="d-flex flex-column">
-  <side-nav></side-nav>
-  <div id="content">
-    <nav-bar></nav-bar>
-    <div class="bg-light px-4 pb-1 pt-1">
-      <breadcrumbs></breadcrumbs>
+    <side-nav></side-nav>
+    <div id="content">
+        <nav-bar></nav-bar>
+        <div class="px-4 pb-1 pt-1 bg-light">
+            <breadcrumbs></breadcrumbs>
+        </div>
+        <loading if.bind="appLoading">Loading</loading>
+        <au-viewport if.bind="!appLoading" activation-events="navigation"></au-viewport>
     </div>
-    <au-viewport activation-events="navigation"></au-viewport>
-  </div>
 </div>

@@ -1,0 +1,129 @@
+<div class="m-3 p-3 shadow-3 b-1 bg-light border" style="border-radius: 10px">
+    <h3 class="p-0 mb-3"><span class="text-primary">${parameters.companyId === "1" ? 'Twizza' : 'Crickley'}</span> ${parameters.dealType} Deal</h3>
+    <div class="row">
+        <div class="col-12">
+            <div class="input-group mb-3">
+                <span class="input-group-text"><i class="fa-solid fa-calendar"></i></span>
+                <div class="form-outline datepicker me-3" id="myDatepicker">
+                    <input
+                        style="
+                            border: 1px solid #ccc;
+                            border-top-left-radius: 0 !important;
+                            border-bottom-left-radius: 0 !important;
+                            height: calc(2.08rem + 2px);
+                        "
+                        type="text"
+                        placeholder="Effective Date"
+                        class="form-control"
+                        id="exampleDatepicker11"
+                        value="Date From"
+                    />
+                </div>
+                <span class="input-group-text"><i class="fa-solid fa-calendar"></i></span>
+                <div class="form-outline datepicker me-3" id="myDatepicker2">
+                    <input
+                        style="
+                            border: 1px solid #ccc;
+                            border-top-left-radius: 0 !important;
+                            border-bottom-left-radius: 0 !important;
+                            height: calc(2.08rem + 2px);
+                        "
+                        type="text"
+                        placeholder="Effective Date"
+                        class="form-control"
+                        id="exampleDatepicker2"
+                        value="Date To"
+                    />
+                </div>
+                <div class="input-group datepicker" id="myDatepicker" if.bind="parameters.dealType === 'List'">
+                    <span class="input-group-text"><i class="fa-solid fa-tag"></i></span>
+                    <select class="select d-flex w-100" style="border: 1px solid rgb(189, 189, 189)">
+                        <option value="1">Testin</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                        <option value="4">Four</option>
+                        <option value="5">Five</option>
+                        <option value="6">Six</option>
+                        <option value="7">Seven</option>
+                        <option value="8">Eight</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="m-3 mt-2 shadow-4" style="border-radius: 10px; overflow: hidden">
+    <div class="table-responsive" style="height: calc(100vh - 365px)">
+        <table class="table table-hover table-striped mb-0">
+            <tbody repeat.for="product of groupedProducts" style="border: 3px solid #fff">
+                <tr
+                    style="cursor: pointer"
+                    class="accordion-toggle collapsed bg-light"
+                    id="accordion1"
+                    data-mdb-toggle="collapse"
+                    data-mdb-target="#collapseOne${$index}"
+                    aria-controls="collapseOne${$index}"
+                >
+                    <td class="expand-button text-success"></td>
+                    <td>${product.name} - ${product.size}${product.unitOfMeasurement}</td>
+                    <td>${product.packSize} Pack</td>
+                    <td class="d-flex justify-content-end">
+                        <div class="input-group" style="width: 200px">
+                            <span class="input-group-text" id="basic-addon1">R</span>
+                            <input
+                                type="text"
+                                class="form-control"
+                                placeholder="0.00"
+                                value="0.00"
+                                aria-label="Username"
+                                value.bind="product.price"
+                                aria-describedby="basic-addon1"
+                            />
+                        </div>
+                    </td>
+                </tr>
+                <tr class="hide-table-padding bg-light">
+                    <td colspan="4">
+                        <div class="collapse in p-3 bg-white" id="collapseOne${$index}">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" style="text-align: start">Description</th>
+                                        <th scope="col" style="text-align: center">Pack Size</th>
+                                        <th scope="col" style="text-align: end">New Pack Deal Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr repeat.for="item of product.products">
+                                        <td class="p-2" style="text-align: start">${item.ProductFlavour.Name}</td>
+                                        <td class="p-2" style="text-align: center">${item.PackSize}</td>
+                                        <td class="p-2 d-flex justify-content-end" style="text-align: end">
+                                            <div class="input-group" style="width: 200px">
+                                                <span class="input-group-text" id="basic-addon1">R</span>
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    placeholder="0.00"
+                                                    value="${product.price}"
+                                                    value.bind="item.price"
+                                                    aria-label="Username"
+                                                    aria-describedby="basic-addon1"
+                                                />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="container-fluid d-flex w-100 p-3 bg-primary align-items-end justify-content-end gap-3">
+        <button class="btn btn-outline-white">Cancel</button>
+        <button class="btn-white btn" click.trigger="test()">Save</button>
+        <button class="btn btn-success">Submit</button>
+    </div>
+</div>

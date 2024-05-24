@@ -1,16 +1,19 @@
 {
-  "compilerOptions": {
-    "emitDecoratorMetadata": false,
-    "experimentalDecorators": false,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "skipLibCheck": true,
-    "target": "ES2017",
-    "esModuleInterop": true,
-    "resolveJsonModule": true,
-    "importHelpers": true,
-    "sourceMap": true
-  },
-  "include": ["test", "src"],
-  "files": ["src/resource.d.ts"]
+    "compilerOptions": {
+        "emitDecoratorMetadata": false,
+        "experimentalDecorators": false,
+        "module": "esnext",
+        "moduleResolution": "node",
+        "skipLibCheck": true,
+        "target": "ES2017",
+        "esModuleInterop": true,
+        "resolveJsonModule": true,
+        "importHelpers": true,
+        "sourceMap": true,
+        "baseUrl": "./",
+        "paths": {
+            "rxjs/*": ["node_modules/rxjs/*"]
+        }
+    },
+    "include": ["test", "src"]
 }

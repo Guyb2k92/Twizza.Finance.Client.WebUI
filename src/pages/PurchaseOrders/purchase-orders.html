@@ -1,1 +1,160 @@
-<p>Purchase Orders</p>
+<template>
+    <!-- <require from="./purchase-order"></require>
+    <error-banner width-class="col-12"></error-banner> -->
+    <ul class="nav nav-tabs d-flex justify-content-end">
+      <li class="nav-item" style.bind="navItem">
+        <a class="nav-link ${choseOrders ? 'active': ''}" click.trigger="choseOrders = true">Purchase Orders</a>
+      </li>
+      <li class="nav-item" style.bind="navItem">
+        <a class="nav-link ${choseOrders ? '': 'active'}" click.trigger="choseOrders = false">Purchase Invoices</a>
+      </li>
+    </ul>
+  
+    <div if.bind="choseOrders">
+  
+      <div class="grid gap-3">
+        <div class="p-2 g-col-6">
+          <h4>Purchase Orders</h4>
+        </div>
+      </div>
+  
+      <div class="grid gap-3">
+        <div class="row">
+          <div class="btn-group" id="status">
+            <button type="button" disabled.bind="loading" class="btn btn-secondary dropdown-toggle"
+              style="min-width: 220px" data-toggle="dropdown">
+              ${selectedStatusValue}
+            </button>
+  
+            <div class="dropdown-menu">
+              <!-- <a class="dropdown-item" click.delegate="filterBy(null)" style="cursor: pointer">
+              &nbsp;All
+            </a> -->
+              <a class="dropdown-item" if.bind="poStatuses" repeat.for="status of poStatuses" style="cursor: pointer"
+                click.trigger="filterBy(status)">
+                &nbsp; ${status}
+              </a>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <input class="form-control" placeholder="Search..." id="filter" />
+          </div>
+          <div class="col-6 col-md-2">
+            <button class="btn btn-primary" disabled.bind="loading" click.trigger="reset()">Search</button>
+          </div>
+        </div>
+      </div>
+  
+  
+      <div class="grid gap-3">
+        <div class="p-2 g-col-6">
+          <a href="purchase-order.html" class="btn btn-primary" role="button">New Purchase
+            Order</a>
+        </div>
+      </div>
+      <!-- PO Grid -->
+      <div class="mb-3 row">
+        <table class="table table-striped">
+          <th>PO Number</th>
+          <th>Status</th>
+          <th>Vendor</th>
+          <th>Location</th>
+          <th>Business Unit</th>
+          <th>Division</th>
+          <th>Order Date</th>
+          <th>Is Recurring</th>
+          <th>Total Excl Vat</th>
+   <!-- class="table-responsive" -->
+          <tr  repeat.for="po of poInfo"   style="cursor: pointer;">
+            <td style="font-size: 14px;">${po.PurchaseOrderNumber}</td>
+            <td style="font-size: 14px;">${po.Status}</td>
+            <td style="font-size: 14px;">${po.Vendor}</td>
+            <td style="font-size: 14px;">${po.Location}</td>
+            <td style="font-size: 14px;">${po.BusinessUnit}</td>
+            <td style="font-size: 14px;">${po.Division}</td>
+            <td style="font-size: 14px;">${po.OrderDate}</td>
+            <td style="font-size: 14px;">${po.IsRecurringPurchase}</td>
+            <td style="font-size: 14px;">R ${po.TotalExclVat}</td>
+            <!-- <td style="font-size: 14px;"> <button class="btn btn-primary" click.trigger="trigger">Edit</button></td> -->
+          </tr>
+        </table>
+      </div>
+  
+      <!-- End Choose Orders -->
+    </div>
+  
+    <div if.bind="!choseOrders">
+      <div class="grid gap-3">
+        <div class="p-2 g-col-6">
+          <h4>Purchase Invoice</h4>
+        </div>
+      </div>
+  
+  
+      <div class="grid gap-3">
+        <div class="row">
+          <div class="btn-group" id="piStatus">
+            <button type="button" disabled.bind="loading" class="btn btn-secondary dropdown-toggle"
+              style="min-width: 220px" data-toggle="dropdown">
+              ${selectedPiStatus}
+            </button>
+  
+            <div class="dropdown-menu">
+              <!-- <a class="dropdown-item" click.delegate="filterBy(null)" style="cursor: pointer">
+              &nbsp;All
+            </a> -->
+              <a class="dropdown-item" if.bind="piStatuses" repeat.for="piStatus of piStatuses" style="cursor: pointer"
+                click.trigger="filterBy(piStatus)">
+                &nbsp; ${piStatus}
+              </a>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <input class="form-control" placeholder="Search..." id="pifilter" />
+          </div>
+          <div class="col-6 col-md-2">
+            <button class="btn btn-primary" disabled.bind="loading" click.trigger="piReset()">Search</button>
+          </div>
+        </div>
+      </div>
+  
+      <div class="p-2 g-col-6">
+        <!-- <labkel  >sdfdsf</label> -->
+        <!-- <h4>Purchase Invoice</h4> -->
+      </div>
+  
+      <!-- PI Grid -->
+      <div class="mb-3 row">
+        <table class="table table-striped">
+          <th>PI Number</th>
+          <th>Status</th>
+          <th>Vendor</th>
+          <th>Location</th>
+          <th>PO Number</th>
+          <th>PO Status</th>
+  
+          <th>Posting Date</th>
+          <th>Order Date</th>
+          <th>Is Recurring</th>
+          <th>Total Excl Vat</th>
+   <!-- class="table-responsive" -->
+          <tr  repeat.for="pi of PurchaseInvoice"   style="cursor: pointer;">
+            <td style="font-size: 14px;">${po.PurchaseOrderNumber}</td>
+            <td style="font-size: 14px;">${po.Status}</td>
+            <td style="font-size: 14px;">${po.Vendor}</td>
+            <td style="font-size: 14px;">${po.Location}</td>
+            <td style="font-size: 14px;">${po.BusinessUnit}</td>
+            <td style="font-size: 14px;">${po.Division}</td>
+            <td style="font-size: 14px;">${po.OrderDate}</td>
+            <td style="font-size: 14px;">${po.IsRecurringPurchase}</td>
+            <td style="font-size: 14px;">R ${po.TotalExclVat}</td>
+            <!-- <td style="font-size: 14px;"> <button class="btn btn-primary" click.trigger="trigger">Edit</button></td> -->
+          </tr>
+        </table>
+      </div>
+  
+    </div>
+  
+    </div>
+  </template>
+  

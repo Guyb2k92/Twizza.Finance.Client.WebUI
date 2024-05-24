@@ -1,6 +1,56 @@
-<div
-  class="m-3 bg-light shadow-5"
-  style="border-radius: 10px; overflow: hidden"
->
-  <div id="datatable" data-mdb-loading="true"></div>
+<div class="m-3 p-3 shadow-4 b-1 bg-light" style="border-radius: 10px">
+    <div class="container-fluid d-flex align-items-center justify-content-end column-gap-3" style="margin-top: -1.5rem">
+        <div class="btn-group shadow-0" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-info me-1" data-mdb-color="dark">New List Deal</button>
+            <button load="/deals/create-deal?companyId=1&amp;dealType=Cycle" type="button" class="btn btn-info" data-mdb-color="dark">
+                New Cycle Deal
+            </button>
+        </div>
+    </div>
+
+    <h3 class="p-0 mb-3">Deals</h3>
+
+    <div class="row">
+        <div class="col-sm-12 col-md-4 col-lg-4">
+            <div class="btn-group d-flex" role="group" aria-label="Button group with nested dropdown ">
+                <button
+                    type="button w-100"
+                    class="btn border btn-white ${activeDealType === 'list' ? 'active' : ''}"
+                    click.trigger="setActiveDealType('list')"
+                >
+                    List
+                </button>
+                <button
+                    type="button w-100"
+                    class="btn border btn-white ${activeDealType === 'cycle' ? 'active' : ''}"
+                    click.trigger="setActiveDealType('cycle')"
+                >
+                    Cycle
+                </button>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-8 col-lg-8">
+            <div class="input-group mb-3">
+                <span class="input-group-text"><i class="fa-solid fa-magnifying-glass"></i></span>
+                <input placeholder="Customer Search" type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4" role="group">
+            <select class="select w-100 p-2" style="height: 100%" value.bind="activeFilter" change.trigger="getDeals(activeFilter)">
+                <option repeat.for="filter of filterList" value="${filter}">${filter}</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="m-3 bg-light shadow-5" style="border-radius: 10px; overflow: hidden">
+    <div
+        id="datatable-clickable-rows"
+        data-mdb-fixed-header="true"
+        data-mdb-max-height="calc(100vh - 218px - 190px)"
+        data-mdb-clickable-rows="true"
+        data-mdb-loading="true"
+    ></div>
 </div>
